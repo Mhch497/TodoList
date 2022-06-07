@@ -1,0 +1,45 @@
+{% extends 'todo/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    <p class="prompt">{{ prompt }}</p>
+    <input id="name" type="text" name="name" value='{{task.task}}' class="form-control title change">
+    <p class="form-control cat"></p>
+    <p><select id="cat" name="cat" class="form-control cat change">
+
+        {% for c in cats %}
+            {% if c != cat %}
+                 <option value={{c.id}}>{{c.name}}</option>
+            {% elif c == cat %}
+                <option selected value={{c.id}}>{{c.name}}</option>
+            {% endif %}
+        {% endfor %}
+    </select></p>
+    <input id="content" type="text" name="content" value='{{task.content}}' class="form-control content change">
+    <br>
+
+
+        <input id="date_todo" type="date" name="date" value='{{task.data_todo|date:"Y-m-d"}}' class="task_date change">
+        <br>
+
+    {% if task.is_done == 1 %}
+        <label class="checkbox">
+            <p>Выполнено<input type="checkbox" class="checkbox" name="checkbox" value="{{ task.id }}" checked={{task.is_done}}></p>
+        </label>
+    {% endif %}
+
+    <div class="buttons">
+        <input class="btn btn--blue change" type="submit" value="Сохранить изменения" name="change">
+        <input class="btn btn--blue change" type="submit" value="Удалить задачу" name="delete">
+    </div>
+
+    <div class="form-error">{{ error }}</div>
+
+</form>
+
+{% endblock %}

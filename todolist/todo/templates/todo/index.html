@@ -1,0 +1,57 @@
+{% extends 'todo/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+<h3 class="heading">Все задачи</h3>
+<form action="" method="post">
+    {% if tasks|length == 0 %}
+         <p class="content">Вы ничего не запланировали</p>
+    {% else %}
+        <input class="btn btn--blue down" type="submit" value="Обновить">
+        <div class="cats_flex">
+            <div class="cats_no_done">
+            {% for cat in cats %}
+                <div class="cats_inner">
+                    <a href="{{ cat.get_absolute_url }}"><h4 class="heading">{{cat.name}}</h4></a>
+                 {% for task in tasks %}
+                    {% if task.category == cat and task.is_done != 1 %}
+
+                        <label class="checkbox">
+
+                                {% csrf_token %}
+
+                                <input type="checkbox" id="{{task.id}}" class="checkbox" name="checkbox" value="{{ task.id}}">
+                                <a href="{{ task.get_absolute_url }}"><span class="tasks nocomplete" for="">{{ task.task }}</span></a>
+                                  <div class="form-error">{{ error }}</div>
+
+
+
+                        </label>
+
+                    {% endif %}
+                {%endfor%}
+                </div>
+            {%endfor%}
+
+
+                    </div>
+                        <div class="cats_done">
+                             <h4 class="heading done">Завершенные</h4>
+                            {% for task in done_tasks %}
+                            <label class="checkbox">
+
+                                    <input type="checkbox" class="checkbox" name="checkbox" value="{{ task.id }}" checked disabled>
+                                <a href="{{ task.get_absolute_url }}"><span class="tasks complete">{{ task.task }}</span></a>
+
+
+                            </label>
+                            {% endfor %}
+                        </div>
+
+        </div>
+    {% endif %}
+</form>
+{% endblock %}

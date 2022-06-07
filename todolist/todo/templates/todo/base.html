@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang=ru>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/css/stylesheet.css">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <h3 class="app_name">To Do List</h3>
+    </header>
+    <div class="app_content">
+        <nav class="nav">
+            <a class="nav__link main" href="{% url 'home' %}">Все задачи</a>
+            <p class="nav__link main">Категории:</p>
+            <form action="" method="post" class="nav">
+                {% csrf_token %}
+                {% if cats|length != 0 %}
+                    {% for cat in cats %}
+                            <a href="{{ cat.get_absolute_url }}" class="nav__link">{{ cat.name }}</a>
+                    {% endfor %}
+                {% endif %}
+                <input id="name" type="text" name="name" class="form-control title new" placeholder="Давайте добавим категорию">
+                <br>
+                <input class="btn btn--white cats" type="submit" value="Добавить">
+
+                <div class="form-error">{{ error }}</div>
+            </form>
+        </nav>
+        <div class="main_content">
+            {% block content %}
+            {% endblock %}
+            <a href="{% url 'addTask' %}"><button class="btn btn--white">Добавить задачу</button></a>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

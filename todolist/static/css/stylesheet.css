@@ -1,0 +1,313 @@
+body {
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    color: #6c7279;
+    background-color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+p{
+    margin: 0 0 10px;
+}
+
+a{
+    text-decoration: none;
+}
+
+/*Container
+=============*/
+.container {
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+
+/*Header
+=============*/
+
+.header {
+    width: 100%;
+    height: 80px;
+    background-color: #31344e;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.app_name{
+
+    font-size: 32px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.app_content{
+    margin-top: 90px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+/*Navigation
+=============*/
+
+.nav {
+    display: flex;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    align-items: center;
+    background-color: #515369;
+    flex-direction: column;
+    width: 25%;
+    justify-content: space-evenly;
+}
+
+.nav__link {
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.75;
+    transition: opacity .1s linear;
+    margin-bottom: 10px;
+}
+
+.nav__link.main{
+    margin-bottom: 0;
+    opacity: 1;
+}
+
+.nav__link.main:hover{
+    opacity: 0.75;
+}
+
+.nav__link:first-child{
+    margin-top: 10px;
+}
+
+form.nav{
+    width: 100%;
+}
+
+
+.nav__link:hover {
+    opacity: 1;
+}
+
+.main_content{
+    margin-left: 15px;
+}
+
+.btn {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 13px;
+    padding: 14px 40px;
+    border-radius: 2px;
+    font-family: inherit;
+
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background .1s linear;
+    text-align: center;
+    border-radius: 30px;
+}
+
+.btn.btn--white{
+    background-color: #fff;
+    color: #31344e;
+
+}
+
+.btn.btn--blue {
+    background-color: #31344e;
+
+
+}
+
+.btn.btn--blue.cats {
+    margin-top: 15px;
+}
+
+
+
+.btn--white:hover {
+    opacity: 40%;
+}
+.cats_flex{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+
+}
+
+.cats_inner{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 50%;
+
+}
+
+.cats_no_done{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 80%;
+}
+
+.cats_done{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    width: 40%;
+}
+
+.checkbox{
+    margin-bottom: 10px;
+}
+
+
+
+.tasks{
+    font-size: 14px;
+    color: #31344e;
+
+    margin-top: 15px;
+}
+
+.tasks.complete{
+    text-decoration: line-through;
+    opacity: 70%;
+}
+
+.heading{
+    font-size: 16px;
+    color: #31344e;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.heading.done{
+    opacity: 70%;
+}
+
+.content {
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    color: #0f57ab;
+}
+
+.form-error {
+    list-style: none;
+    padding: 0;
+    color: #CC0000;
+}
+
+h4.heading{
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+.cat_inner {
+    display: flex;
+    align-items: flex-start;
+}
+
+.delete_input {
+    border: 0;
+    background-color: #fff;
+    opacity: 70%;
+}
+
+.delete_input:hover{
+    opacity: 1;
+}
+
+.form-control.title{
+    width: 300px;
+    border: 0;
+    border-bottom: 2px #31344e solid;
+    color: rgb(59, 59, 59));
+}
+
+.form-control.title.change{
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.form-control.title.new{
+    width: 90%;
+    margin: 10px 0 -10px;
+    font-size: 14px;
+    background-color: #515369;
+
+}
+
+input::-webkit-input-placeholder {
+    color: #fff;
+}
+
+.form-control.content{
+    width: 300px;
+    height: 50px;
+    border: 1px solid #31344e;
+    color: #31344e;
+}
+
+.form-control.cat{
+    width: 145px;
+    color: #31344e;
+}
+
+.task_date{
+    margin-top: 10px;
+
+}
+
+.cat_task{
+
+}
+
+.prompt{
+    color: #0f57ab;
+
+}
+
+.change {
+    font-size: 15px;
+
+
+}
+
+.buttons{
+    display: flex;
+}
+
+.btn.btn--blue.change{
+    margin: 15px 15px 0 0;
+    font-size: 14px;
+}
+
+

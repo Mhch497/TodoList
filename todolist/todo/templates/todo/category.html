@@ -1,0 +1,43 @@
+{% extends 'todo/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+<p class="prompt">{{ prompt }}</p>
+
+
+<form action="" method="post">
+    <input id="name" type="text" name="name" value='{{cat.name}}' class="form-control title change">
+        <div class="cats_flex">
+            <div class="cats_inner">
+                 {% for task in tasks %}
+                    {% if task.category == cat and task.is_done != 1 %}
+                        <label class="checkbox">
+                                {% csrf_token %}
+                                <input type="checkbox" id="{{task.id}}" class="checkbox change" name="checkbox" value="{{ task.id}}">
+                                <a href="{{ task.get_absolute_url }}"><span class="tasks nocomplete change" for="">{{ task.task }}</span></a>
+                                <div class="form-error">{{ error }}</div>
+                        </label>
+                    {% endif %}
+                {%endfor%}
+            </div>
+        </div>
+        <h4 class="heading done">Завершенные</h4>
+        <div class="cats_inner">
+            {% for task in tasks %}
+                {% if task.category == cat and task.is_done == 1 %}
+                    <label class="checkbox">
+                        <input type="checkbox" class="checkbox" name="checkbox" value="{{ task.id }}" checked disabled>
+                        <span class="tasks complete">{{ task.task }}</span>
+                    </label>
+                {% endif %}
+            {% endfor %}
+        </div>
+         <div class="buttons">
+                <input class="btn btn--blue change" type="submit" value="Обновить список" name="update">
+                <input class="btn btn--blue change" type="submit" value="Удалить категорию" name="delete">
+         </div>
+</form>
+{% endblock %}

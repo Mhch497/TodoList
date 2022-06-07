@@ -1,0 +1,27 @@
+{% extends 'todo/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+
+<h3 class="heading">Категории</h3>
+    {% if cats|length != 0 %}
+        {% for cat in cats %}
+            <p class="content">{{ cat.name }}</p>
+        {% endfor %}
+    {% else %}
+        <p class="content">Категории еще не созданы</p>
+    {% endif %}
+
+<form action="{% url 'cats' %}" method="post">
+    {% csrf_token %}
+    <input id="name" type="text" name="name" value="Введите категорию">
+    <br>
+    <input class="btn btn--red" type="submit" value="Добавить">
+    <div class="btn btn--red">{{ f.errors }}</div>
+
+</form>
+
+{% endblock %}
